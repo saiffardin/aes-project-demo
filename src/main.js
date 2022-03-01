@@ -25,15 +25,37 @@ const createWindow = () => {
 }
 
 
-const apiReq = (event) => {
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+const apiReqLogin = (event,obj) => {
+    const {employeeId, password} = obj;
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+
+    // this req body is made wth dummy data
+    // in our actual case we will receive our 'reqBody' from parameter
+    // const {employeeId, password,body} = obj;
+    
+    const reqBody = JSON.stringify({
+        title: 'foo',
+        body: 'bar',
+        userId: 1,
+    });
+
+    const httpReq = {
+        method: 'POST',
+        body: reqBody,
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }
+
+    fetch(url,httpReq)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            console.log('------------------------');
+            console.log(data);
 
             // login is successful
             // send user data to login.js
-            event.returnValue = 'api response -- promise';
+            event.returnValue = data;
         })
 }
 
@@ -51,9 +73,13 @@ app.whenReady().then(() => {
 
 // event comes from => login.js
 // when the login button is clicked
-ipcMain.on('send-api-req-login', (e) => {
-    console.log('send-api-req-login -- main.js');
-    apiReq(e);
+ipcMain.on('send-api-req-login', (e, obj) => {
+    const {employeeId, password} = obj;
+    console.log('ipcMain id:', employeeId);
+    console.log('ipcMain pass:', password);
+
+    // i made this post request with dummy data
+    apiReqLogin(e,obj);
 })
 
 
