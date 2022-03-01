@@ -12,15 +12,36 @@
 
     <link rel="stylesheet" href="../css/style.css">
 
-
     <title>Log In</title>
 </head>
 
 <body>
-    <h1>Log In</h1>
+    <div class="container LogIn d-flex flex-column">
+        <!-- logo -->
+        <div class="text-center my-2 mw-50">
+            <img src="../../images/agi.png" alt="agi">
+        </div>
 
-    <div>
+        <!-- login form -->
 
+        <form >
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <button type="submit" class="btn btn-danger">Login</button id="btn-login">
+
+            <div class="d-flex flex-row my-2">
+                <p>Do not have any account?</p>
+                <span class="ps-2 span-toggle" id="span-create-acc">Create Account</span>
+            </div>
+        </form>
     </div>
 
     <script>
