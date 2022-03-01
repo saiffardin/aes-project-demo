@@ -11,7 +11,7 @@ formLogin.addEventListener("submit", (e) => {
     // fire events to => main.js
     // get the api response from main.js
 
-    const apiRes = ipcRenderer.send('send-api-req-login');
+    const apiRes = ipcRenderer.sendSync('send-api-req-login');
     console.log('apiRes login.js ===', apiRes);
 });
 
