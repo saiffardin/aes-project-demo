@@ -1,5 +1,7 @@
-const {electron, app, BrowserWindow} = require('electron');
+const {electron, app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
+
+const fetch = require('electron-fetch').default;
 
 let mainWindow;
 
@@ -23,6 +25,19 @@ const createWindow = () => {
 }
 
 
+const apiReq = (event) => {
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+
+            // login is successful
+            // send user data to login.js
+            event.returnValue = 'api response -- promise';
+        })
+}
+
+
 app.whenReady().then(() => {
     createWindow();
 
@@ -31,6 +46,14 @@ app.whenReady().then(() => {
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+})
+
+
+// event comes from => login.js
+// when the login button is clicked
+ipcMain.on('send-api-req-login', (e) => {
+    console.log('send-api-req-login -- main.js');
+    apiReq(e);
 })
 
 

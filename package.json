@@ -19,5 +19,8 @@
   "homepage": "https://github.com/saiffardin/aes-project-demo#readme",
   "devDependencies": {
     "electron": "^17.1.0"
+  },
+  "dependencies": {
+    "electron-fetch": "^1.7.4"
   }
 }
