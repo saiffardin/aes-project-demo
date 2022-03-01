@@ -1,0 +1,12 @@
+.LogIn img {
+    width: 50%;
+}
+
+.span-toggle {
+    transition: all 0.3s ease-in-out;
+}
+
+.span-toggle:hover {
+    color: red;
+    cursor: pointer;
+}
