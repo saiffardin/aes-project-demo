@@ -1,7 +1,6 @@
 const {electron, app, BrowserWindow, ipcMain} = require('electron');
-const path = require('path');
-
 const fetch = require('electron-fetch').default;
+const path = require('path');
 
 let mainWindow;
 
@@ -17,7 +16,6 @@ const createWindow = () => {
     })
 
     // and load the index.html of the app.
-    console.log(__dirname);
     mainWindow.loadFile('src/html/login.html');
 
     // Open the DevTools.
@@ -25,18 +23,19 @@ const createWindow = () => {
 }
 
 
-const apiReqLogin = (event,obj) => {
-    const {employeeId, password} = obj;
+const apiReqLogin = (event,bodyObj) => {
+    const {employeeId, password} = bodyObj;
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
     // this req body is made wth dummy data
     // in our actual case we will receive our 'reqBody' from parameter
     // const {employeeId, password,body} = obj;
+
+    // console.log('bodyObj:',bodyObj)
     
     const reqBody = JSON.stringify({
-        title: 'foo',
-        body: 'bar',
-        userId: 1,
+        title: 'aes login api',
+        body: bodyObj
     });
 
     const httpReq = {
@@ -75,8 +74,8 @@ app.whenReady().then(() => {
 // when the login button is clicked
 ipcMain.on('send-api-req-login', (e, obj) => {
     const {employeeId, password} = obj;
-    console.log('ipcMain id:', employeeId);
-    console.log('ipcMain pass:', password);
+    // console.log('ipcMain id:', employeeId);
+    // console.log('ipcMain pass:', password);
 
     // i made this post request with dummy data
     apiReqLogin(e,obj);
