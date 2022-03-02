@@ -1,5 +1,6 @@
 ## 1. Login a User
-- endpoint : `/POST/users-credential`
+- doc name : **User Credential**
+- endpoint : `/POST /users-credential`
 - Valid Request Body:
     ```json
     {
@@ -32,7 +33,8 @@
 ---
 
 ## 2. Create a User
-- endpoint : `/POST/users`
+- doc name : **User**
+- endpoint : `/POST /users`
 - Valid Request Body:
     ```json
     {
