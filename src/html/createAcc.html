@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <h1>Create Account</h1>
+
     <div class="container LogIn d-flex flex-column">
         <!-- logo -->
         <div class="text-center my-2 mw-50">
@@ -38,29 +38,40 @@
             <!-- emailAddress -->
             <div class="mb-3">
                 <label for="createAccEmailAddress" class="form-label">Email</label>
-                <input type="email" class="form-control" id="createAccEmailAddress"
-                    placeholder="Enter email address">
+                <input type="email" class="form-control" id="createAccEmailAddress" placeholder="Enter email address">
             </div>
 
 
             <!-- businessUnit -->
+            <div class="mb-3">
+                <label for="createAccBusinessUnit" class="form-label">Business Unit</label>
+                <input type="text" class="form-control" id="createAccBusinessUnit" placeholder="Enter business unit">
+            </div>
 
 
             <!-- department -->
-
+            <div class="mb-3">
+                <label for="createAccDepartment" class="form-label">Department</label>
+                <input type="text" class="form-control" id="createAccDepartment" placeholder="Enter department">
+            </div>
 
             <!-- designation -->
-
+            <div class="mb-3">
+                <label for="createAccDesignation" class="form-label">Designation</label>
+                <input type="text" class="form-control" id="createAccDesignation" placeholder="Enter designation">
+            </div>
 
             <!-- roles -->
-
-
-            <button type="submit" class="btn btn-danger">Create User</button>
-
-            <div class="d-flex flex-row my-2">
-                <p>Do not have any account?</p>
-                <span class="ps-2 span-toggle" id="span-create-acc">Create Account</span>
+            <div class="mb-3">
+                <label for="createAccRoles" class="form-label">Roles</label>
+                <input type="text" class="form-control" id="createAccDesignation" placeholder="Enter roles">
             </div>
+
+            <!-- submit btn -->
+            <div class="my-4 ">
+                <button type="submit" class="btn btn-danger">Create User</button>
+            </div>
+
         </form>
     </div>
 
