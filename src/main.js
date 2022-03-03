@@ -17,7 +17,7 @@ const createWindow = () => {
 
     // and load the index.html of the app.
     // mainWindow.loadFile('src/html/login.html');
-    mainWindow.loadFile('src/html/createAcc.html');
+    mainWindow.loadFile('src/html/createUser.html');
 
 
     // Open the DevTools.
@@ -25,16 +25,12 @@ const createWindow = () => {
 }
 
 
-const apiReqLogin = (event,bodyObj) => {
+const apiReqLogin = (event, bodyObj) => {
     const {employeeId, password} = bodyObj;
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
-    // this req body is made wth dummy data
-    // in our actual case we will receive our 'reqBody' from parameter
-    // const {employeeId, password,body} = obj;
-
     // console.log('bodyObj:',bodyObj)
-    
+
     const reqBody = JSON.stringify({
         title: 'aes login api',
         body: bodyObj
@@ -48,7 +44,7 @@ const apiReqLogin = (event,bodyObj) => {
         }
     }
 
-    fetch(url,httpReq)
+    fetch(url, httpReq)
         .then(res => res.json())
         .then(data => {
             console.log('------------------------');
@@ -58,6 +54,50 @@ const apiReqLogin = (event,bodyObj) => {
             // send user data to login.js
             event.returnValue = data;
         })
+}
+
+
+const apiReqCreateUser = (e, bodyObj) => {
+    const {employeeId, emailAddress, businessUnit, department, designation, roles} = bodyObj;
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+
+
+    const reqBody = JSON.stringify({
+        title: 'create user api',
+        body: bodyObj
+    });
+
+    const httpReq = {
+        method: 'POST',
+        body: reqBody,
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }
+
+    fetch(url, httpReq)
+        .then(res => res.json())
+        .then(data => {
+            console.log('------------------------');
+            console.log(data);
+            // return data;
+            e.returnValue = data;
+
+
+            // nicher code tuk aes er actual server a request pathanor time a use hobe
+            /*
+            if (data.success) {
+                // user creation is successful
+                // send user data to createUser.js
+                return data;
+            }
+            
+            else if (data.errors) {
+                throw new Error(data);
+            */
+
+        })
+        .catch(err => console.log(err))
 }
 
 
@@ -80,9 +120,20 @@ ipcMain.on('send-api-req-login', (e, obj) => {
     // console.log('ipcMain pass:', password);
 
     // i made this post request with dummy data
-    apiReqLogin(e,obj);
+    apiReqLogin(e, obj);
 })
 
+
+// event comes from => createUser.js
+// when the "create user" button is clicked
+ipcMain.on('send-api-req-createUser', (event, obj) => {
+    const {employeeId, emailAddress, businessUnit, department, designation, roles} = obj;
+    console.log('ipcMain obj:', obj);
+
+    // event.returnValue = apiReqCreateUser(obj);
+    apiReqCreateUser(event, obj);
+
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
