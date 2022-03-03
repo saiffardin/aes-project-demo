@@ -57,7 +57,7 @@ const apiReqLogin = (event, bodyObj) => {
 }
 
 
-const apiReqCreateUser = (e, bodyObj) => {
+const apiReqCreateUser = (bodyObj) => {
     const {employeeId, emailAddress, businessUnit, department, designation, roles} = bodyObj;
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -75,16 +75,15 @@ const apiReqCreateUser = (e, bodyObj) => {
         }
     }
 
-    fetch(url, httpReq)
+    return fetch(url, httpReq)
         .then(res => res.json())
         .then(data => {
             console.log('------------------------');
             console.log(data);
-            // return data;
-            e.returnValue = data;
+            return data;
 
 
-            // nicher code tuk aes er actual server a request pathanor time a use hobe
+            // nicher code tuk AES er actual server a request pathanor time a use hobe
             /*
             if (data.success) {
                 // user creation is successful
@@ -126,13 +125,13 @@ ipcMain.on('send-api-req-login', (e, obj) => {
 
 // event comes from => createUser.js
 // when the "create user" button is clicked
-ipcMain.on('send-api-req-createUser', (event, obj) => {
+ipcMain.on('send-api-req-createUser', async (event, obj) => {
     const {employeeId, emailAddress, businessUnit, department, designation, roles} = obj;
-    console.log('ipcMain obj:', obj);
+    // console.log('ipcMain obj:', obj);
 
-    // event.returnValue = apiReqCreateUser(obj);
-    apiReqCreateUser(event, obj);
-
+    const response = await apiReqCreateUser(obj)
+    // console.log('fetch return:',response);
+    event.returnValue = response;
 })
 
 app.on('window-all-closed', () => {

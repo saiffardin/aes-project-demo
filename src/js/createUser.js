@@ -16,20 +16,21 @@ formCreateUser.addEventListener("submit", (e) => {
     // variables er naam gula
     // api te j name pathabo taar shathe
     // mill rekhe kora hoise
-    // const employeeId = inputEmpId.value;
-    // const emailAddress = inputEmpEmail.value;
-    // const businessUnit = inputEmpBusinessUnit.value;
-    // const department = inputEmpDepartment.value;
-    // const designation = inputEmpDesignation.value;
-    // const roles = inputEmpRoles.value;
+    const employeeId = inputEmpId.value;
+    const emailAddress = inputEmpEmail.value;
+    const businessUnit = inputEmpBusinessUnit.value;
+    const department = inputEmpDepartment.value;
+    const designation = inputEmpDesignation.value;
+    const roles = inputEmpRoles.value;
 
-    // these are hard-coded dummy data
-    const employeeId = 170104084;
-    const emailAddress = "saif@aes.com";
-    const businessUnit = "AES";
-    const department = "Software Engineering";
-    const designation = "Frontend Developer";
-    const roles = "EMPLOYEE";
+    /* these are hard-coded dummy data */
+    
+    // const employeeId = 170104084;
+    // const emailAddress = "saif@aes.com";
+    // const businessUnit = "AES";
+    // const department = "Software Engineering";
+    // const designation = "Frontend Developer";
+    // const roles = "EMPLOYEE";
 
     const empObj = {employeeId, emailAddress, businessUnit, department, designation, roles}
 
