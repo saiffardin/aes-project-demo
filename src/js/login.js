@@ -15,7 +15,7 @@ formLogin.addEventListener("submit", (e) => {
 
     // console.log('id:',employeeId);
     // console.log('password:',password);
-    console.log(empObj);
+    // console.log(empObj);
 
     // fire events to => main.js
     // to get the api response from main.js

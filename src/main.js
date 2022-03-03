@@ -16,8 +16,8 @@ const createWindow = () => {
     })
 
     // and load the index.html of the app.
-    // mainWindow.loadFile('src/html/login.html');
-    mainWindow.loadFile('src/html/createUser.html');
+    mainWindow.loadFile('src/html/login.html');
+    // mainWindow.loadFile('src/html/createUser.html');
 
 
     // Open the DevTools.
@@ -25,11 +25,11 @@ const createWindow = () => {
 }
 
 
-const apiReqLogin = (event, bodyObj) => {
+const apiReqLogin = (bodyObj) => {
     const {employeeId, password} = bodyObj;
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
-    // console.log('bodyObj:',bodyObj)
+    console.log('bodyObj:', bodyObj)
 
     const reqBody = JSON.stringify({
         title: 'aes login api',
@@ -44,16 +44,27 @@ const apiReqLogin = (event, bodyObj) => {
         }
     }
 
-    fetch(url, httpReq)
+    return fetch(url, httpReq)
         .then(res => res.json())
         .then(data => {
             console.log('------------------------');
             console.log(data);
+            return data;
 
-            // login is successful
-            // send user data to login.js
-            event.returnValue = data;
+            // nicher code tuk AES er actual server a request pathanor time a use hobe
+            /*
+            if (data.success) {
+                // user creation is successful
+                // send user data to createUser.js
+                return data;
+            }
+            
+            else if (data.errors) {
+                throw new Error(data);
+            */
         })
+        .catch(err => console.log(err))
+
 }
 
 
@@ -113,13 +124,12 @@ app.whenReady().then(() => {
 
 // event comes from => login.js
 // when the login button is clicked
-ipcMain.on('send-api-req-login', (e, obj) => {
+ipcMain.on('send-api-req-login', async (event, obj) => {
     const {employeeId, password} = obj;
-    // console.log('ipcMain id:', employeeId);
-    // console.log('ipcMain pass:', password);
 
-    // i made this post request with dummy data
-    apiReqLogin(e, obj);
+    const response = await apiReqLogin(obj)
+    // console.log('fetch return:',response);
+    event.returnValue = response;
 })
 
 
