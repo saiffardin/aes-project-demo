@@ -31,7 +31,7 @@
             <!-- employeeId -->
             <div class="mb-3">
                 <label for="createAccEmployeeId" class="form-label">Employee ID</label>
-                <input type="number" class="form-control" id="createAccEmployeeId" aria-describedby="emailHelp"
+                <input required type="number" class="form-control" id="createAccEmployeeId" aria-describedby="emailHelp"
                     placeholder="Enter employee id">
             </div>
 
@@ -39,7 +39,7 @@
             <!-- emailAddress -->
             <div class="mb-3">
                 <label for="createAccEmailAddress" class="form-label">Email</label>
-                <input type="email" class="form-control" id="createAccEmailAddress"
+                <input required type="email" class="form-control" id="createAccEmailAddress"
                     placeholder="Enter email address" pattern="\S+@\S+\.\S+">
             </div>
 
@@ -48,7 +48,7 @@
             <div class="mb-3">
                 <label for="createAccBusinessUnit" class="form-label">Business Unit</label>
 
-                <select class="form-select" id="createAccBusinessUnit">
+                <select required class="form-select" id="createAccBusinessUnit">
                     <option value="" selected disabled>Select Unit</option>
                     <option value="ACL">ACL</option>
                     <option value="AES">AES</option>
@@ -61,7 +61,7 @@
             <!-- department -->
             <div class="mb-3">
                 <label for="createAccDepartment" class="form-label">Department</label>
-                <input type="text" class="form-control" id="createAccDepartment" placeholder="Enter department"
+                <input required type="text" class="form-control" id="createAccDepartment" placeholder="Enter department"
                     pattern="^(\w+\s)*\w+$">
             </div>
 
@@ -69,7 +69,7 @@
             <!-- designation -->
             <div class="mb-3">
                 <label for="createAccDesignation" class="form-label">Designation</label>
-                <input type="text" class="form-control" id="createAccDesignation"
+                <input required type="text" class="form-control" id="createAccDesignation"
                     placeholder="Enter designation" pattern="^(\w+\s)*\w+$">
             </div>
 
@@ -78,7 +78,7 @@
             <div class="mb-3">
                 <label for="createAccRoles" class="form-label">Roles</label>
 
-                <select class="form-select" id="createAccRoles">
+                <select required class="form-select" id="createAccRoles">
                     <option value="" selected disabled>Select role</option>
                     <option value="EMPLOYEE">EMPLOYEE</option>
                     <option value="ADMIN">ADMIN</option>
