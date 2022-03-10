@@ -5,5 +5,3 @@ const apiObj = {
 }
 
 contextBridge.exposeInMainWorld('api', apiObj);
-
-

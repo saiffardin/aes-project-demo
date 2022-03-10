@@ -14,8 +14,10 @@ const createWindow = () => {
     })
     // and load the index.html of the app.
 
-    mainWindow.loadFile(path.join(__dirname, 'html/login.html'));
-    // mainWindow.loadFile('src/html/createUser.html');
+    // mainWindow.loadFile(path.join(__dirname, 'html/login.html'));
+    
+    mainWindow.loadFile(path.join(__dirname, 'html/createUser.html'));
+
 
 
     // Open the DevTools.

@@ -1,5 +1,3 @@
-const {ipcRenderer} = require('electron');
-
 const inputEmpId = document.getElementById('createAccEmployeeId');
 const inputEmpEmail = document.getElementById('createAccEmailAddress');
 const inputEmpBusinessUnit = document.getElementById('createAccBusinessUnit');
@@ -10,12 +8,15 @@ const inputEmpRoles = document.getElementById('createAccRoles');
 const formCreateUser = document.getElementById('form-create-user');
 
 
-formCreateUser.addEventListener("submit", (e) => {
+formCreateUser.addEventListener("submit", async(e) => {
     e.preventDefault();
+
+    const serverURL = 'https://jsonplaceholder.typicode.com/posts';
 
     // variables er naam gula
     // api te j name pathabo taar shathe
     // mill rekhe kora hoise
+
     const employeeId = inputEmpId.value;
     const emailAddress = inputEmpEmail.value;
     const businessUnit = inputEmpBusinessUnit.value;
@@ -24,7 +25,7 @@ formCreateUser.addEventListener("submit", (e) => {
     const roles = inputEmpRoles.value;
 
     /* these are hard-coded dummy data */
-    
+
     // const employeeId = 170104084;
     // const emailAddress = "saif@aes.com";
     // const businessUnit = "AES";
@@ -32,13 +33,11 @@ formCreateUser.addEventListener("submit", (e) => {
     // const designation = "Frontend Developer";
     // const roles = "EMPLOYEE";
 
-    const empObj = {employeeId, emailAddress, businessUnit, department, designation, roles}
+    const empObj = {employeeId, emailAddress, businessUnit, department, designation, roles, serverURL};
 
     // console.log('empObj:', empObj);
 
-    // fire events to => main.js
-    // to get the api response from main.js
-    const apiRes = ipcRenderer.sendSync('send-api-req-createUser', empObj);
-    console.log('apiRes createUser.js ===', apiRes);
+    const apiRes = await window.api.postReq(empObj);
 
+    console.log('apiRes createUser.js ===', apiRes);
 })
