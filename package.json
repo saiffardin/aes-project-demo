@@ -21,6 +21,7 @@
     "electron": "^17.1.0"
   },
   "dependencies": {
+    "bootstrap-icons": "^1.8.1",
     "electron-fetch": "^1.7.4"
   }
 }

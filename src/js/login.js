@@ -1,7 +1,7 @@
 const inputEmpId = document.getElementById('ele-emp-id');
 const inputEmpPassword = document.getElementById('ele-emp-password');
 const formLogin = document.getElementById('form-login');
-const createAccountSpan = document.getElementById('span-create-acc');
+const forgotPasswordSpan = document.getElementById('span-forgot-password');
 
 
 formLogin.addEventListener("submit", async (e) => {
@@ -10,8 +10,9 @@ formLogin.addEventListener("submit", async (e) => {
     const serverURL = 'https://jsonplaceholder.typicode.com/posts';
     const employeeId = inputEmpId.value;
     const password = inputEmpPassword.value;
-    
-    const empObj = {employeeId,password,serverURL};
+
+    const empObj = {employeeId, password, serverURL};
+    console.log(empObj);
 
     // console.log('id:',employeeId);
     // console.log('password:',password);
@@ -25,6 +26,6 @@ formLogin.addEventListener("submit", async (e) => {
 });
 
 
-createAccountSpan.addEventListener("click", (e) => {
-    console.log('createAccountSpan clicked');
+forgotPasswordSpan.addEventListener("click", (e) => {
+    console.log('forgotPasswordSpan clicked');
 });
