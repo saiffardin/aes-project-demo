@@ -5,23 +5,24 @@ const path = require('path');
 let mainWindow;
 
 const createWindow = () => {
+
+
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+
+        height: 800,
+        minWidth: 1400,
+
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
     })
     // and load the index.html of the app.
-
-    // mainWindow.loadFile(path.join(__dirname, 'html/login.html'));
-    
-    mainWindow.loadFile(path.join(__dirname, 'html/createUser.html'));
+    mainWindow.loadFile(path.join(__dirname, 'html/login.html'));
 
 
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 }
 
 

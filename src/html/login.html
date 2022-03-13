@@ -17,34 +17,48 @@
 </head>
 
 <body>
-    <div class="container LogIn d-flex flex-column">
+
+
+    <div class="row LogIn g-0">
+
         <!-- logo -->
-        <div class="text-center my-2 mw-50">
-            <img class="logo" src="../../images/agi.png" alt="agi">
+        <div class="col-5 ms-5 ps-5 me-5 pe-5 d-flex align-items-center ">
+            <!-- mw-50 my -2 -->
+            <div class="d-flex justify-content-end">
+                <img class="logo" src="../../images/agi.png" alt="agi">
+            </div>
         </div>
 
-        <!-- login form -->
+        <div class="vr-line col ms-5"></div>
 
-        <form id="form-login">
-            <div class="mb-3">
-                <label for="ele-emp-id" class="form-label">Employee ID</label>
-                <input type="number" class="form-control" id="ele-emp-id" placeholder="Enter your employee id here">
-            </div>
+        <div class="col-5 d-flex align-items-center">
+            <!-- login form -->
+            <form class="ms-5 " id="form-login">
+                <h1 class="my-5">Login</h1>
+                <div class="my-4">
+                    <!-- <label for="ele-emp-id" class="form-label">Employee ID</label> -->
+                    <input type="email" class="form-control" id="ele-emp-id" placeholder="Enter your email here">
+                </div>
 
-            <div class="mb-3">
-                <label for="ele-emp-password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="ele-emp-password"
-                    placeholder="Enter your password here">
-            </div>
+                <div class="my-4">
+                    <!-- <label for="ele-emp-password" class="form-label">Password</label> -->
+                    <input type="password" class="form-control" id="ele-emp-password"
+                        placeholder="Enter your password here">
+                </div>
 
-            <button type="submit" class="btn btn-danger">Login</button>
+                <button type="submit" class="btn btn-danger">Login</button>
 
-            <div class="d-flex flex-row my-2">
-                <p>Do not have any account?</p>
-                <span class="ps-2 span-toggle" id="span-create-acc">Create Account</span>
-            </div>
-        </form>
+                <div class="d-flex flex-row my-2">
+                    <p>Do not have any account?</p>
+                    <span class="ps-2 span-toggle" id="span-create-acc">Create Account</span>
+                </div>
+            </form>
+        </div>
     </div>
+
+
+
+
 
     <script src="../js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

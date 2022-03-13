@@ -1,3 +1,24 @@
+.LogIn {
+    background-image: url('../../images/xd_imgs/3.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;    
+
+    height: 800px;
+}
+
+
+.vr-line{
+    border-left: 4px solid lightgray;
+    
+}
+
+
+#form-login {
+    /* font-size: medium; */
+}
+
+
 .span-toggle {
     transition: all 0.3s ease-in-out;
 }
